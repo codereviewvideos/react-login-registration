@@ -1,5 +1,6 @@
 import React, { PropTypes } from 'react';
 import { Link, IndexLink } from 'react-router';
+import "babel-es6-polyfill";
 
 // This is a class-based component because the current
 // version of hot reloading won't hot reload a stateless
