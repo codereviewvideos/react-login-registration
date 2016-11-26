@@ -1,10 +1,18 @@
 import React, {Component} from 'react';
+import {connect} from 'react-redux';
 import LoginForm from '../components/LoginForm';
+import * as types from '../constants/actionTypes';
 
 class LoginPage extends Component {
 
   doLogin(formData) {
-    console.log('form data was received', formData);
+    this.props.dispatch({
+      type: types.LOGIN__REQUESTED,
+      payload: {
+        username: formData.username,
+        password: formData.password
+      }
+    });
   }
 
   render() {
@@ -18,4 +26,4 @@ class LoginPage extends Component {
 }
 
 
-export default LoginPage;
+export default connect()(LoginPage);
