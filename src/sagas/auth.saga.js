@@ -1,22 +1,43 @@
 import * as api from '../connectivity/api';
 import {call, put} from 'redux-saga/effects';
 import {takeLatest} from 'redux-saga';
+import jwtDecode from 'jwt-decode';
 import * as types from '../constants/actionTypes';
 
 export function *doLogin(action) {
 
-  const {username, password} = action.payload;
+  try {
 
-  const responseBody = yield call(api.login, username, password);
+    const {username, password} = action.payload;
 
-  console.log('auth saga', responseBody);
+    const responseBody = yield call(api.login, username, password);
 
-  yield put({
-    type: types.LOGIN__SUCCEEDED,
-    payload: {
-      idToken: responseBody.token
+    if (typeof responseBody.token === "undefined") {
+      throw new Error('Unable to find JWT in response body');
     }
-  });
+
+    console.log('auth saga', responseBody);
+
+    yield put({
+      type: types.LOGIN__SUCCEEDED,
+      payload: {
+        idToken: responseBody.token
+      }
+    });
+
+  } catch (e) {
+
+    console.log('doLogin e', e);
+
+    yield put({
+      type: types.LOGIN__FAILED,
+      payload: {
+        message: e.message,
+        statusCode: e.statusCode
+      }
+    });
+
+  }
 }
 
 
@@ -32,6 +53,17 @@ export function *watchLogin() {
 
 export function *doLoginSucceeded(action) {
 
+  const {idToken} = action.payload;
+
+  const {id, username} = yield call(jwtDecode, idToken);
+
+  yield put({
+    type: types.LOGIN__COMPLETED,
+    payload: {
+      id,
+      username
+    }
+  });
 
 }
 

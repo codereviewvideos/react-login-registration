@@ -1,3 +1,5 @@
+import HttpApiCallError from '../errors/HttpApiCallError';
+
 export async function login(username, password) {
 
   const url = 'http://api.rest-user-api.dev/app_acceptance.php/login';
@@ -16,13 +18,15 @@ export async function login(username, password) {
 
   const response = await fetch(url, requestConfig);
 
-  const data = response.json();
+  const data = await response.json();
 
   if (response.status === 200) {
     return data;
   }
 
-  // throw
-
+  throw new HttpApiCallError(
+    data.message || response.statusText,
+    response.status
+  );
 
 }
