@@ -2,6 +2,8 @@ import React, { PropTypes } from 'react';
 import {connect} from 'react-redux';
 import { Link, IndexLink } from 'react-router';
 import "babel-es6-polyfill";
+import NavBar from './NavBar';
+import { Container, Row } from 'reactstrap';
 
 // This is a class-based component because the current
 // version of hot reloading won't hot reload a stateless
@@ -10,13 +12,16 @@ class App extends React.Component {
   render() {
     return (
       <div>
-        <IndexLink to="/">Home</IndexLink>
-        {' | '}
-        <Link to="/fuel-savings">Demo App</Link>
-        {' | '}
-        <Link to="/about">About</Link>
-        <br/>
-        {this.props.children}
+
+        <NavBar
+          auth={this.props.auth}
+        />
+
+        <Container className="content-wrapper">
+          <Row>
+            {this.props.children}
+          </Row>
+        </Container>
       </div>
     );
   }
