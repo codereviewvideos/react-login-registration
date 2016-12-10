@@ -1,4 +1,5 @@
 import React, { PropTypes } from 'react';
+import {connect} from 'react-redux';
 import { Link, IndexLink } from 'react-router';
 import "babel-es6-polyfill";
 
@@ -16,6 +17,9 @@ class App extends React.Component {
         <Link to="/about">About</Link>
         <br/>
         {this.props.children}
+
+
+        {this.props.auth.isAuthenticated ? 'Welcome back!' : 'You must login'}
       </div>
     );
   }
@@ -25,4 +29,12 @@ App.propTypes = {
   children: PropTypes.element
 };
 
-export default App;
+function mapStateToProps(state) {
+  return {
+    auth: state.auth
+  }
+}
+
+export default connect(
+  mapStateToProps
+)(App);
