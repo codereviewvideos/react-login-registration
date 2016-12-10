@@ -6,8 +6,6 @@ const HomePage = () => {
   return (
     <div>
       <h1>React Slingshot</h1>
-
-      <LoginPage/>
     </div>
   );
 };

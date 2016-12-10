@@ -2,6 +2,7 @@ import * as api from '../connectivity/api';
 import {call, put} from 'redux-saga/effects';
 import {takeLatest} from 'redux-saga';
 import jwtDecode from 'jwt-decode';
+import {push} from 'react-router-redux';
 import * as types from '../constants/actionTypes';
 
 export function *doLogin(action) {
@@ -84,4 +85,22 @@ export function *doLoginFailed(action) {
 
 export function *watchLoginFailed() {
   yield takeLatest(types.LOGIN__FAILED, doLoginFailed);
+}
+
+
+
+
+export function *doLogoutRequested() {
+  yield put({
+    type: types.LOGOUT__COMPLETED
+  });
+
+  // redirect to /
+  yield put(
+    push('/')
+  );
+}
+
+export function *watchLogoutRequested() {
+  yield takeLatest(types.LOGOUT__REQUESTED, doLogoutRequested);
 }

@@ -1,9 +1,16 @@
 import React, {Component} from 'react';
 import {connect} from 'react-redux';
+import {withRouter} from 'react-router';
 import LoginForm from '../components/LoginForm';
 import * as types from '../constants/actionTypes';
 
 class LoginPage extends Component {
+
+  componentWillReceiveProps(newProps) {
+    if (newProps.pageState.auth.isAuthenticated) {
+      this.props.router.replace('/');
+    }
+  }
 
   doLogin(formData) {
     this.props.dispatch({
@@ -25,5 +32,12 @@ class LoginPage extends Component {
 
 }
 
+const mapStateToProps = (state) => {
+  return {
+    pageState: state
+  }
+};
 
-export default connect()(LoginPage);
+LoginPage = withRouter(LoginPage);
+
+export default connect(mapStateToProps)(LoginPage);

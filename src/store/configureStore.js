@@ -1,5 +1,7 @@
 import {createStore, compose, applyMiddleware} from 'redux';
 import createLogger from 'redux-logger';
+import {routerMiddleware} from 'react-router-redux';
+import {browserHistory} from 'react-router';
 import createSagaMiddleware, {END} from 'redux-saga';
 import sagas from '../sagas';
 import reduxImmutableStateInvariant from 'redux-immutable-state-invariant';
@@ -9,6 +11,7 @@ import {loadState, saveState} from '../connectivity/localStorage';
 
 const persistedState = loadState();
 
+const routerMw = routerMiddleware(browserHistory);
 const loggerMiddleware = createLogger();
 const sagaMiddleware = createSagaMiddleware();
 
@@ -16,6 +19,7 @@ function configureStoreProd() {
   const middlewares = [
     // Add other middleware on this line...
 
+    routerMw,
     sagaMiddleware
   ];
 
@@ -43,6 +47,7 @@ function configureStoreDev() {
     // Redux middleware that spits an error on you when you try to mutate your state either inside a dispatch or between dispatches.
     reduxImmutableStateInvariant(),
 
+    routerMw,
     sagaMiddleware,
     loggerMiddleware
   ];

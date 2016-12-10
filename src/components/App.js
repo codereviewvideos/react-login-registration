@@ -17,9 +17,6 @@ class App extends React.Component {
         <Link to="/about">About</Link>
         <br/>
         {this.props.children}
-
-
-        {this.props.auth.isAuthenticated ? 'Welcome back!' : 'You must login'}
       </div>
     );
   }
