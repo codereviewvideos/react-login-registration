@@ -14,7 +14,7 @@ export default function auth(state = {
         isAuthenticated: true,
         id,
         username
-      })
+      });
     }
 
 
@@ -23,12 +23,12 @@ export default function auth(state = {
         isAuthenticated: false,
         id: undefined,
         username: undefined
-      })
+      });
     }
 
 
     default: {
-      console.log('authReducer hit default', action.type);
+      // console.log('authReducer hit default', action.type);
       return state;
     }
   }

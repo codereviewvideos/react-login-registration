@@ -1,6 +1,6 @@
 import React from 'react';
 import {Link} from 'react-router';
-import { Navbar, NavbarBrand, Nav, NavItem, NavLink } from 'reactstrap';
+import {Navbar, NavbarBrand, Nav, NavItem, NavLink} from 'reactstrap';
 import '../styles/navbar.scss';
 
 let NavBar = (props) => {
@@ -23,7 +23,7 @@ let NavBar = (props) => {
         <NavItem>
           <NavLink tag={Link} to="/login">Log in</NavLink>
         </NavItem>
-      </Nav>
+      </Nav>;
   };
 
 

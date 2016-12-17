@@ -1,6 +1,5 @@
 import React, { PropTypes } from 'react';
 import {connect} from 'react-redux';
-import { Link, IndexLink } from 'react-router';
 import "babel-es6-polyfill";
 import NavBar from './NavBar';
 import { Container, Row } from 'reactstrap';
@@ -28,13 +27,14 @@ class App extends React.Component {
 }
 
 App.propTypes = {
+  auth: PropTypes.object.isRequired,
   children: PropTypes.element
 };
 
 function mapStateToProps(state) {
   return {
     auth: state.auth
-  }
+  };
 }
 
 export default connect(

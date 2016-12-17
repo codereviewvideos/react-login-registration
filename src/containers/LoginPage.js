@@ -29,15 +29,21 @@ class LoginPage extends Component {
       />
     );
   }
-
 }
+
+LoginPage.propTypes = {
+  dispatch: React.PropTypes.func.isRequired,
+  router: React.PropTypes.object.isRequired,
+};
 
 const mapStateToProps = (state) => {
   return {
     pageState: state
-  }
+  };
 };
 
-LoginPage = withRouter(LoginPage);
-
-export default connect(mapStateToProps)(LoginPage);
+export default connect(
+  mapStateToProps
+)(
+  withRouter(LoginPage)
+);

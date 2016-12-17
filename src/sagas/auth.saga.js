@@ -17,8 +17,6 @@ export function *doLogin(action) {
       throw new Error('Unable to find JWT in response body');
     }
 
-    console.log('auth saga', responseBody);
-
     yield put({
       type: types.LOGIN__SUCCEEDED,
       payload: {
@@ -27,8 +25,6 @@ export function *doLogin(action) {
     });
 
   } catch (e) {
-
-    console.log('doLogin e', e);
 
     yield put({
       type: types.LOGIN__FAILED,
@@ -77,11 +73,9 @@ export function *watchLoginSucceeded() {
 
 
 
-export function *doLoginFailed(action) {
-
+export function *doLoginFailed() {
 
 }
-
 
 export function *watchLoginFailed() {
   yield takeLatest(types.LOGIN__FAILED, doLoginFailed);

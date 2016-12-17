@@ -31,6 +31,7 @@ const LoginForm = (props) => {
 };
 
 LoginForm.propTypes = {
+  handleSubmit: React.PropTypes.func.isRequired,
   onSubmit: React.PropTypes.func.isRequired
 };
 
