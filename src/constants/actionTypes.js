@@ -1,3 +1,5 @@
+export const SENDING_REQUEST = 'sending-request';
+
 export const LOGIN__REQUESTED = 'login-requested';
 export const LOGIN__SUCCEEDED = 'login-succeeded';
 export const LOGIN__FAILED = 'login-failed';

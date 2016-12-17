@@ -1,8 +1,9 @@
-import React, { PropTypes } from 'react';
+import React, {PropTypes} from 'react';
 import {connect} from 'react-redux';
 import "babel-es6-polyfill";
 import NavBar from './NavBar';
-import { Container, Row } from 'reactstrap';
+import font from 'font-awesome/css/font-awesome.css'; // eslint-disable-line
+import {Container, Row} from 'reactstrap';
 
 // This is a class-based component because the current
 // version of hot reloading won't hot reload a stateless

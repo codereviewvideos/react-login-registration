@@ -3,7 +3,6 @@ import {Field, reduxForm} from 'redux-form';
 import {Button} from 'reactstrap';
 
 const LoginForm = (props) => {
-
   return (
     <form onSubmit={props.handleSubmit} className="form-signin">
 
@@ -30,7 +29,15 @@ const LoginForm = (props) => {
               block
               color="success"
       >
-        Login
+        {props.submitting ?
+          <span>
+            <i className="fa fa-spin fa-spinner"/> Logging In...
+          </span>
+
+          :
+
+          <span>Login</span>
+        }
       </Button>
     </form>
   );
@@ -39,7 +46,8 @@ const LoginForm = (props) => {
 
 LoginForm.propTypes = {
   handleSubmit: React.PropTypes.func.isRequired,
-  onSubmit: React.PropTypes.func.isRequired
+  onSubmit: React.PropTypes.func.isRequired,
+  submitting: React.PropTypes.bool.isRequired
 };
 
 export default reduxForm({
