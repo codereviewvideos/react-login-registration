@@ -1,10 +1,11 @@
 import React from 'react';
 import {Field, reduxForm} from 'redux-form';
+import {Button} from 'reactstrap';
 
 const LoginForm = (props) => {
 
   return (
-    <form onSubmit={props.handleSubmit}>
+    <form onSubmit={props.handleSubmit} className="form-signin">
 
       <Field component="input"
              name="username"
@@ -12,6 +13,7 @@ const LoginForm = (props) => {
              type="text"
              placeholder="Username or email address"
              required="required"
+             className="form-control"
       />
 
       <Field component="input"
@@ -20,11 +22,16 @@ const LoginForm = (props) => {
              type="password"
              placeholder="Password"
              required="required"
+             className="form-control"
       />
 
-      <button type="submit">
+      <Button type="submit"
+              size="lg"
+              block
+              color="success"
+      >
         Login
-      </button>
+      </Button>
     </form>
   );
 
