@@ -27,6 +27,7 @@ class LoginPage extends Component {
     return (
       <LoginForm
         onSubmit={this.doLogin.bind(this)}
+        isSubmitting={this.props.pageState.request.sendingRequest}
       />
     );
   }
