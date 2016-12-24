@@ -1,5 +1,4 @@
 import * as api from '../connectivity/api';
-import {startSubmit, stopSubmit} from 'redux-form';
 import {call, put} from 'redux-saga/effects';
 import {takeLatest, delay} from 'redux-saga';
 import jwtDecode from 'jwt-decode';
@@ -9,8 +8,6 @@ import * as types from '../constants/actionTypes';
 export function *doLogin(action) {
 
   try {
-
-    yield put(startSubmit('login'));
 
     yield put({
       type: types.SENDING_REQUEST,
@@ -51,11 +48,9 @@ export function *doLogin(action) {
     yield put({
       type: types.SENDING_REQUEST,
       payload: {
-        sendingRequest: false
+        sendingRequest: true
       }
     });
-
-    yield put(stopSubmit('login'));
 
   }
 }
