@@ -1,14 +1,26 @@
-import {SENDING_REQUEST} from '../constants/actionTypes';
+import {REQUEST__STARTED, REQUEST__FINISHED} from '../constants/actionTypes';
 
 export default function request(state = {
-  sendingRequest: false
+  sendingRequest: false,
+  inProgress: []
 }, action) {
 
   switch (action.type) {
 
-    case SENDING_REQUEST: {
+    case REQUEST__STARTED: {
       return Object.assign({}, state, {
-        sendingRequest: action.payload.sendingRequest
+        sendingRequest: true,
+        inProgress: state.inProgress.concat([action.payload.requestFrom])
+      });
+    }
+
+    case REQUEST__FINISHED: {
+
+      let stillInProgress = state.inProgress.filter((item) => item !== action.payload.requestFrom);
+
+      return Object.assign({}, state, {
+        sendingRequest: stillInProgress.length > 0,
+        inProgress: stillInProgress
       });
     }
 

@@ -10,9 +10,9 @@ export function *doLogin(action) {
   try {
 
     yield put({
-      type: types.SENDING_REQUEST,
+      type: types.REQUEST__STARTED,
       payload: {
-        sendingRequest: true
+        requestFrom: 'authSaga.doLogin'
       }
     });
 
@@ -46,7 +46,7 @@ export function *doLogin(action) {
   } finally {
 
     yield put({
-      type: types.SENDING_REQUEST,
+      type: types.REQUEST__FINISHED,
       payload: {
         sendingRequest: true
       }
