@@ -1,6 +1,6 @@
 import * as api from '../connectivity/api';
 import {call, put} from 'redux-saga/effects';
-import {takeLatest, delay} from 'redux-saga';
+import {takeLatest} from 'redux-saga';
 import jwtDecode from 'jwt-decode';
 import {push} from 'react-router-redux';
 import * as types from '../constants/actionTypes';
@@ -23,8 +23,6 @@ export function *doLogin(action) {
     if (typeof responseBody.token === "undefined") {
       throw new Error('Unable to find JWT in response body');
     }
-
-    yield call(delay, 5000);
 
     yield put({
       type: types.LOGIN__SUCCEEDED,
