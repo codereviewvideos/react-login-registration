@@ -1,6 +1,7 @@
 export const REQUEST__STARTED = 'REQUEST__STARTED';
 export const REQUEST__FINISHED = 'REQUEST__FINISHED';
 
+
 export const LOGIN__REQUESTED = 'login-requested';
 export const LOGIN__SUCCEEDED = 'login-succeeded';
 export const LOGIN__FAILED = 'login-failed';
