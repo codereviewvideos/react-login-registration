@@ -10,7 +10,7 @@ describe('asyncFetch', () => {
     fetchMock.restore();
   });
 
-  it('can fetch', async () => {
+  xit('can fetch', async () => {
 
     fetchMock.get('http://fake.com', {hello: "world"});
 
@@ -21,7 +21,7 @@ describe('asyncFetch', () => {
 
   });
 
-  it('handles errors', async () => {
+  xit('handles errors', async () => {
 
     fetchMock.get('http://bad.url', {
       status: 400,
@@ -40,7 +40,7 @@ describe('asyncFetch', () => {
 
     fetchMock.get('http://another.bad.url', {
       status: 403,
-      body: JSON.stringify("bad data")
+      body: JSON.stringify("go away")
     });
 
     const outcome = await helpers.syncify(async () => {
