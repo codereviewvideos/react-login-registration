@@ -2,7 +2,8 @@ import asyncFetch from './async-fetch';
 
 export async function login(username, password) {
 
-  const url = 'http://api.rest-user-api.dev/app_acceptance.php/login';
+  /* global API_BASE_URL */
+  const url = API_BASE_URL + '/login';
 
   const requestConfig = {
     method: 'POST',

@@ -112,5 +112,10 @@
   "repository": {
     "type": "git",
     "url": ""
+  },
+  "jest": {
+    "setupFiles": [
+      "./setupJest.js"
+    ]
   }
 }

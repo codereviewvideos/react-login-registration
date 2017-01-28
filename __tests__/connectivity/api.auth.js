@@ -5,6 +5,10 @@ import * as api from '../../src/connectivity/api.auth';
 
 describe('API Auth', () => {
 
+  afterEach(() => {
+    jest.resetAllMocks();
+  });
+
   describe('login', () => {
 
     it('has a happy path', async () => {
@@ -17,7 +21,8 @@ describe('API Auth', () => {
       const response = await api.login('bob', 'testpass');
       expect(response).toEqual('it worked!');
 
-      const expectedUrl = 'http://api.rest-user-api.dev/app_acceptance.php/login';
+      /* global API_BASE_URL */
+      const expectedUrl = API_BASE_URL + '/login';
       const actualUrl = asyncFetch.mock.calls[0][0];
       expect(expectedUrl).toEqual(actualUrl);
 

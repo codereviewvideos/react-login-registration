@@ -1,7 +1,7 @@
 import * as authSaga from '../../src/sagas/auth.saga';
 import * as types from '../../src/constants/actionTypes';
 import {call, put} from 'redux-saga/effects';
-import * as api from '../../src/connectivity/api';
+import * as api from '../../src/connectivity/api-auth';
 
 describe('Auth Saga', () => {
 
