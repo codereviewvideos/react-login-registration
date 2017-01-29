@@ -114,8 +114,8 @@
     "url": ""
   },
   "jest": {
-    "setupFiles": [
-      "./setupJest.js"
-    ]
+    "globals": {
+      "API_BASE_URL": "blah"
+    }
   }
 }

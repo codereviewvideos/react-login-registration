@@ -1,4 +1,4 @@
-import * as api from '../connectivity/api-auth';
+import * as api from '../connectivity/api.auth';
 import {call, put} from 'redux-saga/effects';
 import {takeLatest} from 'redux-saga';
 import jwtDecode from 'jwt-decode';
