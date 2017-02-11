@@ -8,12 +8,19 @@ export default function request(state = {
   switch (action.type) {
 
     case REQUEST__STARTED: {
-
-      state.inProgress.push(action.payload.requestFrom);
-
       return Object.assign({}, state, {
         sendingRequest: true,
-        inProgress: state.inProgress
+        inProgress: state.inProgress.concat([action.payload.requestFrom])
+      });
+    }
+
+    case REQUEST__FINISHED: {
+
+      let stillInProgress = state.inProgress.filter((item) => item !== action.payload.requestFrom);
+
+      return Object.assign({}, state, {
+        sendingRequest: stillInProgress.length > 0,
+        inProgress: stillInProgress
       });
     }
 

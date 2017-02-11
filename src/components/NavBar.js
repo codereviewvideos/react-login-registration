@@ -10,7 +10,7 @@ let NavBar = (props) => {
     return auth.isAuthenticated ?
       <Nav className="float-xs-right" navbar>
         <NavItem className="navbar-text">
-          Welcome back {auth.username}
+          <Link to="/profile">Welcome back {auth.username}</Link>
         </NavItem>
         <NavItem>
           <NavLink tag={Link} to="/logout">Logout</NavLink>
