@@ -1,11 +1,17 @@
 import React, {PropTypes} from 'react';
 import {connect} from 'react-redux';
 import ProfileArea from '../components/ProfileArea';
+import * as types from '../constants/actionTypes';
 
 class ProfilePage extends React.Component {
 
   componentDidMount() {
-    const userId = this.props.pageState.auth.id;
+    this.props.dispatch({
+      type: types.PROFILE__REQUESTED,
+      payload: {
+        userId: this.props.pageState.auth.id
+      }
+    });
   }
 
   render() {

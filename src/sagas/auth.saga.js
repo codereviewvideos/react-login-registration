@@ -74,7 +74,8 @@ export function *doLoginSucceeded(action) {
     type: types.LOGIN__COMPLETED,
     payload: {
       id,
-      username
+      username,
+      token: idToken
     }
   });
 
