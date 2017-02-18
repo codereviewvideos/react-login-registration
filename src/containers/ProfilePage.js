@@ -3,6 +3,7 @@ import {connect} from 'react-redux';
 import ProfileArea from '../components/ProfileArea';
 import ChangePasswordForm from '../components/ChangePasswordForm';
 import * as types from '../constants/actionTypes';
+import {REQUESTS} from '../sagas/profile.saga'
 
 class ProfilePage extends React.Component {
 
@@ -36,10 +37,14 @@ class ProfilePage extends React.Component {
       email = ''
     } = this.props.pageState.profile;
 
+    const isSubmitting = this.props.pageState.request.inProgress.indexOf(REQUESTS.PROFILE__DOCHANGEPASSWORD__SAGA) > -1;
+
     return (
       <div>
         <ProfileArea username={username} emailAddress={email}/>
-        <ChangePasswordForm onSubmit={this.handleChangePassword.bind(this)} />
+        <ChangePasswordForm
+          isSubmitting={isSubmitting}
+          onSubmit={this.handleChangePassword.bind(this)} />
       </div>
     );
   }

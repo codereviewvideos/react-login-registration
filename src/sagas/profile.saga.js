@@ -115,3 +115,23 @@ export function *doChangePassword(action) {
 export function *watchChangePassword() {
   yield* takeLatest(types.CHANGE_PASSWORD__REQUESTED, doChangePassword);
 }
+
+
+
+export function *doChangePasswordSucceeded(action) {
+  yield put({
+    type: types.ADD_NOTIFICATION,
+    payload: {
+      message: action.payload.message,
+      level: 'success'
+    }
+  });
+
+  console.log('doChangePasswordSucceeded - would have added notification!', {
+    message: action.payload.message,
+  });
+}
+
+export function *watchChangePasswordSucceeded() {
+  yield *takeLatest(types.CHANGE_PASSWORD__SUCCEEDED, doChangePasswordSucceeded)
+}

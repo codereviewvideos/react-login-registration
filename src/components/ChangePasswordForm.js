@@ -35,7 +35,11 @@ const ChangePasswordForm = (props) => {
               block
               color="success"
       >
-        Change Password
+        {props.isSubmitting ?
+          <span>Updating password...</span>
+          :
+          <span>Change Password</span>
+        }
       </Button>
     </form>
   );
@@ -43,6 +47,7 @@ const ChangePasswordForm = (props) => {
 };
 
 ChangePasswordForm.propTypes = {
+  isSubmitting: React.PropTypes.bool.isRequired,
   onSubmit: React.PropTypes.func.isRequired,
 };
 

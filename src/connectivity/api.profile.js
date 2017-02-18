@@ -30,6 +30,7 @@ export async function changePassword(userId, currentPassword, newPassword, newPa
   /* global API_BASE_URL */
   const url = API_BASE_URL + '/password/' + userId + '/change';
 
-  return await asyncFetch(url, requestConfig);
+  const response = await asyncFetch(url, requestConfig);
 
+  return await response.json();
 }
