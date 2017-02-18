@@ -10,6 +10,7 @@ export default function *rootSaga() {
 
     fork(authSaga.watchLogoutRequested),
 
+    fork(profileSaga.watchChangePassword),
     fork(profileSaga.watchRequestProfile),
   ];
 }

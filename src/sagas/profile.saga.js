@@ -6,6 +6,7 @@ import * as types from '../constants/actionTypes';
 
 export const REQUESTS = {
   PROFILE__DOREQUESTPROFILE__SAGA: 'profile.doRequestProfile.saga',
+  PROFILE__DOCHANGEPASSWORD__SAGA: 'profile.doChangePassword.saga',
 };
 
 
@@ -60,4 +61,57 @@ export function *doRequestProfile(action) {
 
 export function *watchRequestProfile() {
   yield* takeLatest(types.PROFILE__REQUESTED, doRequestProfile);
+}
+
+
+
+
+
+
+export function *doChangePassword(action) {
+
+  try {
+
+    const {userId, currentPassword, newPassword, newPasswordRepeated} = action.payload;
+
+    yield put({
+      type: types.REQUEST__STARTED,
+      payload: {
+        requestFrom: REQUESTS.PROFILE__DOCHANGEPASSWORD__SAGA
+      }
+    });
+
+    const responseBody = yield call(api.changePassword, userId, currentPassword, newPassword, newPasswordRepeated)
+
+    yield put({
+      type: types.CHANGE_PASSWORD__SUCCEEDED,
+      payload: {
+        message: responseBody
+      }
+    })
+
+  } catch (e) {
+
+    yield put({
+      type: types.REQUEST__FAILED,
+      payload: {
+        message: e.message,
+        statusCode: e.statusCode
+      }
+    });
+
+  } finally {
+
+    yield put({
+      type: types.REQUEST__FINISHED,
+      payload: {
+        requestFrom: REQUESTS.PROFILE__DOCHANGEPASSWORD__SAGA
+      }
+    });
+
+  }
+}
+
+export function *watchChangePassword() {
+  yield* takeLatest(types.CHANGE_PASSWORD__REQUESTED, doChangePassword);
 }

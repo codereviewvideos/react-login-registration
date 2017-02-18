@@ -10,3 +10,26 @@ export async function fetchProfile(userId) {
 
   return await response.json();
 }
+
+
+export async function changePassword(userId, currentPassword, newPassword, newPasswordRepeated) {
+
+  const baseRequestConfig = getBaseRequestConfig();
+
+  const requestConfig = Object.assign({}, baseRequestConfig, {
+    method: 'POST',
+    body: JSON.stringify({
+      "current_password": currentPassword,
+      "plainPassword": {
+        "first": newPassword,
+        "second": newPasswordRepeated
+      }
+    })
+  });
+
+  /* global API_BASE_URL */
+  const url = API_BASE_URL + '/password/' + userId + '/change';
+
+  return await asyncFetch(url, requestConfig);
+
+}

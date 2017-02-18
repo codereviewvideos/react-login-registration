@@ -1,6 +1,7 @@
 import React, {PropTypes} from 'react';
 import {connect} from 'react-redux';
 import ProfileArea from '../components/ProfileArea';
+import ChangePasswordForm from '../components/ChangePasswordForm';
 import * as types from '../constants/actionTypes';
 
 class ProfilePage extends React.Component {
@@ -10,6 +11,20 @@ class ProfilePage extends React.Component {
       type: types.PROFILE__REQUESTED,
       payload: {
         userId: this.props.pageState.auth.id
+      }
+    });
+  }
+
+  handleChangePassword(formData) {
+    const {currentPassword, newPassword, newPasswordRepeated} = formData;
+
+    this.props.dispatch({
+      type: types.CHANGE_PASSWORD__REQUESTED,
+      payload: {
+        userId: this.props.pageState.auth.id,
+        currentPassword,
+        newPassword,
+        newPasswordRepeated,
       }
     });
   }
@@ -24,6 +39,7 @@ class ProfilePage extends React.Component {
     return (
       <div>
         <ProfileArea username={username} emailAddress={email}/>
+        <ChangePasswordForm onSubmit={this.handleChangePassword.bind(this)} />
       </div>
     );
   }
