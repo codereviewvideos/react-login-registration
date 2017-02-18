@@ -1,6 +1,6 @@
 import {fork} from 'redux-saga/effects';
 import * as authSaga from './auth.saga';
-import * as profileSage from './profile.saga';
+import * as profileSaga from './profile.saga';
 
 export default function *rootSaga() {
   yield [
@@ -10,6 +10,6 @@ export default function *rootSaga() {
 
     fork(authSaga.watchLogoutRequested),
 
-    fork(profileSage.watchRequestProfile),
+    fork(profileSaga.watchRequestProfile),
   ];
 }
