@@ -15,9 +15,15 @@ class ProfilePage extends React.Component {
   }
 
   render() {
+
+    const {
+      username = '',
+      email = ''
+    } = this.props.pageState.profile;
+
     return (
       <div>
-        <ProfileArea username="peter" emailAddress="peter@whatever.com"/>
+        <ProfileArea username={username} emailAddress={email}/>
       </div>
     );
   }
