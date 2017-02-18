@@ -43,7 +43,7 @@ export function *doRequestProfile(action) {
         message: e.message,
         statusCode: e.statusCode
       }
-    })
+    });
 
   } finally {
 

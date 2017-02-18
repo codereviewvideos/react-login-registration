@@ -35,6 +35,7 @@ class LoginPage extends Component {
 
 LoginPage.propTypes = {
   dispatch: React.PropTypes.func.isRequired,
+  pageState: React.PropTypes.object.isRequired,
   router: React.PropTypes.object.isRequired,
 };
 

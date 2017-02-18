@@ -9,7 +9,7 @@ const ProfileArea = (props) => {
         <li>Email address: {props.emailAddress}</li>
       </ul>
     </div>
-  )
+  );
 };
 
 ProfileArea.propTypes = {

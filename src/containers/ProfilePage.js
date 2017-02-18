@@ -32,7 +32,7 @@ ProfilePage.propTypes = {
 function mapStateToProps(state) {
   return {
     pageState: state
-  }
+  };
 }
 
 export default connect(mapStateToProps)(ProfilePage);
