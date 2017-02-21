@@ -2,6 +2,7 @@ import * as api from '../connectivity/api.profile';
 import {call, put} from 'redux-saga/effects';
 import {takeLatest} from 'redux-saga';
 import * as types from '../constants/actionTypes';
+import {stopSubmit} from 'redux-form';
 
 
 export const REQUESTS = {
@@ -100,6 +101,16 @@ export function *doChangePassword(action) {
       }
     });
 
+    yield put({
+      type: types.CHANGE_PASSWORD__FAILED,
+      payload: {
+        payload: {
+          message: e.message,
+          statusCode: e.statusCode
+        }
+      }
+    })
+
   } finally {
 
     yield put({
@@ -134,4 +145,22 @@ export function *doChangePasswordSucceeded(action) {
 
 export function *watchChangePasswordSucceeded() {
   yield *takeLatest(types.CHANGE_PASSWORD__SUCCEEDED, doChangePasswordSucceeded)
+}
+
+
+
+
+
+
+export function *doChangePasswordFailed(action) {
+
+  console.log('doChangePasswordFailed', action);
+
+  yield put(stopSubmit('change-password', {
+    currentPassword: "nope"
+  }))
+}
+
+export function *watchChangePasswordFailed() {
+  yield *takeLatest(types.CHANGE_PASSWORD__FAILED, doChangePasswordFailed)
 }
