@@ -55,7 +55,7 @@ describe('Auth Saga', () => {
         put({
           type: types.REQUEST__FINISHED,
           payload: {
-            sendingRequest: true
+            requestFrom: 'authSaga.doLogin'
           }
         })
       );
@@ -115,7 +115,7 @@ describe('Auth Saga', () => {
         put({
           type: types.REQUEST__FINISHED,
           payload: {
-            sendingRequest: true
+            requestFrom: 'authSaga.doLogin'
           }
         })
       );
@@ -173,7 +173,7 @@ describe('Auth Saga', () => {
         put({
           type: types.REQUEST__FINISHED,
           payload: {
-            sendingRequest: true
+            requestFrom: 'authSaga.doLogin'
           }
         })
       );

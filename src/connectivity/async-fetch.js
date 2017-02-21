@@ -11,8 +11,11 @@ export default async function asyncFetch(url, requestConfig = {}) {
     return response;
   }
 
-  throw new HttpApiCallError(
+  const error = new HttpApiCallError(
     response.statusText,
     response.status
   );
+  error.response = await response.json();
+
+  throw error;
 }

@@ -3,6 +3,7 @@ import {call, put} from 'redux-saga/effects';
 import {takeLatest} from 'redux-saga';
 import * as types from '../constants/actionTypes';
 import {stopSubmit} from 'redux-form';
+import formErrorHelper from '../helpers/formErrorHelper';
 
 
 export const REQUESTS = {
@@ -104,12 +105,9 @@ export function *doChangePassword(action) {
     yield put({
       type: types.CHANGE_PASSWORD__FAILED,
       payload: {
-        payload: {
-          message: e.message,
-          statusCode: e.statusCode
-        }
+        response: e.response
       }
-    })
+    });
 
   } finally {
 
@@ -155,9 +153,18 @@ export function *watchChangePasswordSucceeded() {
 export function *doChangePasswordFailed(action) {
 
   console.log('doChangePasswordFailed', action);
+  const errorData = action.payload.response;
+
+  const [currentPassword, newPassword, newPasswordRepeated] = [
+    yield call(formErrorHelper, errorData, 'children.current_password.errors'),
+    yield call(formErrorHelper, errorData, 'children.plainPassword.children.first.errors'),
+    yield call(formErrorHelper, errorData, 'children.plainPassword.children.second.errors')
+  ];
 
   yield put(stopSubmit('change-password', {
-    currentPassword: "nope"
+    currentPassword,
+    newPassword,
+    newPasswordRepeated,
   }))
 }
 
