@@ -12,8 +12,16 @@ class RegistrationPage extends React.Component {
     }
   }
 
-  handleRegistration(formData) {
-
+  handleRegistration({username, email, newPassword, newPasswordRepeated}) {
+    this.props.dispatch({
+      type: types.REGISTER__REQUESTED,
+      payload: {
+        username,
+        email,
+        newPassword,
+        newPasswordRepeated
+      }
+    });
   }
 
   render() {

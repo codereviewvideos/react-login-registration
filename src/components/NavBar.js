@@ -21,6 +21,9 @@ let NavBar = (props) => {
 
       <Nav className="float-xs-right" navbar>
         <NavItem>
+          <NavLink tag={Link} to="/register">Register</NavLink>
+        </NavItem>
+        <NavItem>
           <NavLink tag={Link} to="/login">Log in</NavLink>
         </NavItem>
       </Nav>;
