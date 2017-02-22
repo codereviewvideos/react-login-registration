@@ -5,15 +5,24 @@ import FormField from './FormField';
 import FormPasswordFields from './FormPasswordFields';
 
 
-const ChangePasswordForm = (props) => {
+const RegistrationForm = (props) => {
   return (
-    <form onSubmit={props.handleSubmit} className="form-change-password">
+    <form onSubmit={props.handleSubmit} className="form-registration">
 
       <Field component={FormField}
-             name="currentPassword"
-             type="password"
-             label="Current Password"
-             placeholder="Current Password"
+             name="username"
+             type="text"
+             label="Username"
+             placeholder="Username"
+             required="required"
+             className="form-control"
+      />
+
+      <Field component={FormField}
+             name="email"
+             type="email"
+             label="Email"
+             placeholder="Email"
              required="required"
              className="form-control"
       />
@@ -26,9 +35,12 @@ const ChangePasswordForm = (props) => {
               color="success"
       >
         {props.isSubmitting ?
-          <span>Updating password...</span>
+          <span>
+            <i className="fa fa-spin fa-spinner"/>
+            Registering...
+          </span>
           :
-          <span>Change Password</span>
+          <span>Register</span>
         }
       </Button>
     </form>
@@ -36,11 +48,11 @@ const ChangePasswordForm = (props) => {
 
 };
 
-ChangePasswordForm.propTypes = {
+RegistrationForm.propTypes = {
   isSubmitting: React.PropTypes.bool.isRequired,
   onSubmit: React.PropTypes.func.isRequired,
 };
 
 export default reduxForm({
-  form: 'change-password'
-})(ChangePasswordForm);
+  form: 'registration-form'
+})(RegistrationForm);
