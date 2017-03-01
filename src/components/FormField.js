@@ -24,5 +24,11 @@ const formField = ({ input, label, type, meta: { touched, error } }) => {
   );
 };
 
+formField.propTypes = {
+  input: React.PropTypes.object.isRequired,
+  meta: React.PropTypes.object.isRequired,
+  type: React.PropTypes.string.isRequired,
+  label: React.PropTypes.string
+};
 
-export default formField
+export default formField;

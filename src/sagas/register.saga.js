@@ -49,7 +49,7 @@ export function *doRegistration(action) {
       payload: {
         response: e.response,
       }
-    })
+    });
 
   } finally {
 
@@ -115,7 +115,7 @@ export function *doRegistrationFailed(action) {
     email,
     newPassword,
     newPasswordRepeated
-  }))
+  }));
 }
 
 

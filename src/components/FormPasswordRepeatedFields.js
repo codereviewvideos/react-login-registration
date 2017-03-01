@@ -41,5 +41,8 @@ const FormPasswordRepeatedFields = (fields) => {
   );
 };
 
+FormPasswordRepeatedFields.propTypes = {
+  fields: React.PropTypes.object.isRequired
+};
 
-export default FormPasswordRepeatedFields
+export default FormPasswordRepeatedFields;

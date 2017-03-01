@@ -2,8 +2,7 @@ import React from 'react';
 import {Field, Fields, reduxForm} from 'redux-form';
 import {Button} from 'reactstrap';
 import FormField from './FormField';
-import FormPasswordRepeatedFields from './FormPasswordRepeatedFields'
-
+import FormPasswordRepeatedFields from './FormPasswordRepeatedFields';
 
 const RegistrationForm = (props) => {
   return (
@@ -50,6 +49,7 @@ const RegistrationForm = (props) => {
 RegistrationForm.propTypes = {
   isSubmitting: React.PropTypes.bool.isRequired,
   onSubmit: React.PropTypes.func.isRequired,
+  handleSubmit: React.PropTypes.func.isRequired,
 };
 
 export default reduxForm({

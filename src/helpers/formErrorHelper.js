@@ -6,7 +6,7 @@ const errorHelper = (errors, errorPath) => {
 
   try {
 
-    errorInfo = _.get(errors, errorPath, undefined)
+    errorInfo = _.get(errors, errorPath, undefined);
 
     if (Array.isArray(errorInfo)) {
       errorInfo = formatErrors(errorInfo);
@@ -14,7 +14,7 @@ const errorHelper = (errors, errorPath) => {
 
   } catch (e) {
 
-    console.error('errorHelper e', e);
+    // console.error('errorHelper e', e);
 
   }
 

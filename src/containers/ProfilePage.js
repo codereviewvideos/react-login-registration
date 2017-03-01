@@ -3,7 +3,7 @@ import {connect} from 'react-redux';
 import ProfileArea from '../components/ProfileArea';
 import ChangePasswordForm from '../components/ChangePasswordForm';
 import * as types from '../constants/actionTypes';
-import {REQUESTS} from '../sagas/profile.saga'
+import {REQUESTS} from '../sagas/profile.saga';
 
 class ProfilePage extends React.Component {
 

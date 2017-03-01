@@ -37,7 +37,8 @@ class RegistrationPage extends React.Component {
 
 RegistrationPage.propTypes = {
   dispatch: PropTypes.func.isRequired,
-  pageState: PropTypes.object.isRequired
+  pageState: PropTypes.object.isRequired,
+  router: PropTypes.object.isRequired
 };
 
 function mapStateToProps(state) {
