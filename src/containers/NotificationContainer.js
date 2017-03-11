@@ -1,4 +1,4 @@
-import React, {PropTypes} from 'react';
+import React from 'react';
 import {connect} from 'react-redux';
 import NotificationSystem from 'react-notification-system';
 
@@ -26,10 +26,6 @@ class NotificationContainer extends React.Component {
     );
   }
 }
-
-NotificationContainer.propTypes = {
-  notification: PropTypes.object
-};
 
 function mapStateToProps(state) {
   return {

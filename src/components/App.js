@@ -24,7 +24,7 @@ class App extends React.Component {
           </Row>
         </Container>
 
-        <NotificationContainer {...this.props}/>
+        <NotificationContainer />
       </div>
     );
   }
