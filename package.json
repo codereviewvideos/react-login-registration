@@ -39,6 +39,7 @@
     "react-addons-css-transition-group": "15.4.1",
     "react-addons-transition-group": "15.4.1",
     "react-dom": "15.4.1",
+    "react-notification-system": "^0.2.12",
     "react-redux": "4.4.5",
     "react-router": "2.8.1",
     "react-router-redux": "4.0.6",

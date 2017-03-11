@@ -91,7 +91,13 @@ export function *watchLoginSucceeded() {
 
 
 export function *doLoginFailed() {
-
+  yield put({
+    type: types.ADD_NOTIFICATION,
+    payload: {
+      message: 'Check your user name and password, and try again.',
+      level: 'warning'
+    }
+  });
 }
 
 export function *watchLoginFailed() {

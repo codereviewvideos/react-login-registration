@@ -4,6 +4,7 @@ import "babel-es6-polyfill";
 import NavBar from './NavBar';
 import font from 'font-awesome/css/font-awesome.css'; // eslint-disable-line
 import {Container, Row} from 'reactstrap';
+import NotificationContainer from '../containers/NotificationContainer';
 
 // This is a class-based component because the current
 // version of hot reloading won't hot reload a stateless
@@ -22,6 +23,8 @@ class App extends React.Component {
             {this.props.children}
           </Row>
         </Container>
+
+        <NotificationContainer {...this.props}/>
       </div>
     );
   }
