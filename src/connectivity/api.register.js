@@ -1,24 +1,22 @@
 import asyncFetch from './async-fetch';
 import {getBaseRequestConfig} from './baseRequestConfig';
 
-export async function register(username, email, newPassword, newPasswordRepeated) {
-
-  const baseRequestConfig = getBaseRequestConfig();
-
-  const requestConfig = Object.assign({}, baseRequestConfig, {
-    method: 'POST',
-    body: JSON.stringify({
-      "username": username,
-      "email": email,
-      "plainPassword": {
-        "first": newPassword,
-        "second": newPasswordRepeated
-      }
-    })
-  });
+export async function register(username, email, password, passwordRepeated) {
 
   /* global API_BASE_URL */
   const url = API_BASE_URL + '/register';
+
+  const requestConfig = Object.assign({}, getBaseRequestConfig(), {
+    method: 'POST',
+    body: JSON.stringify({
+      username,
+      email,
+      plainPassword: {
+        first: password,
+        second: passwordRepeated
+      }
+    })
+  });
 
   const response = await asyncFetch(url, requestConfig);
 

@@ -2,7 +2,7 @@ import React from 'react';
 import {Field, Fields, reduxForm} from 'redux-form';
 import {Button} from 'reactstrap';
 import FormField from './FormField';
-import FormPasswordRepeatedFields from './FormPasswordRepeatedFields';
+import FormPasswordFields from './FormPasswordFields';
 
 
 const ChangePasswordForm = (props) => {
@@ -18,7 +18,7 @@ const ChangePasswordForm = (props) => {
              className="form-control"
       />
 
-      <Fields names={[ 'newPassword', 'newPasswordRepeated' ]} component={FormPasswordRepeatedFields}/>
+      <Fields names={[ 'newPassword', 'newPasswordRepeated' ]} component={FormPasswordFields}/>
 
       <Button type="submit"
               size="lg"
@@ -39,7 +39,6 @@ const ChangePasswordForm = (props) => {
 ChangePasswordForm.propTypes = {
   isSubmitting: React.PropTypes.bool.isRequired,
   onSubmit: React.PropTypes.func.isRequired,
-  handleSubmit: React.PropTypes.func.isRequired,
 };
 
 export default reduxForm({

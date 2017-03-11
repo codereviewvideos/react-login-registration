@@ -1,7 +1,7 @@
 import {fork} from 'redux-saga/effects';
 import * as authSaga from './auth.saga';
 import * as profileSaga from './profile.saga';
-import * as registerSaga from './register.saga';
+import * as registrationSaga from './register.saga';
 
 export default function *rootSaga() {
   yield [
@@ -16,8 +16,8 @@ export default function *rootSaga() {
     fork(profileSaga.watchChangePasswordFailed),
     fork(profileSaga.watchRequestProfile),
 
-    fork(registerSaga.watchRequestRegistration),
-    fork(registerSaga.watchRegistrationSuccess),
-    fork(registerSaga.watchRegistrationFailed),
+    fork(registrationSaga.watchRequestRegistration),
+    fork(registrationSaga.watchRegistrationFailed),
+    fork(registrationSaga.watchRegistrationSuccess),
   ];
 }
