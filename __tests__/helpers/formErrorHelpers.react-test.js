@@ -32,7 +32,7 @@ describe('Symfony Form Error Helper', () => {
   });
 
 
-  it('returns errors if found', () => {
+  it('returns multiple errors if found', () => {
     let errors = {
       children: {
         current_password: {
